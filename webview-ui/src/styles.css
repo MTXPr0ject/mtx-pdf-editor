@@ -1,0 +1,94 @@
+:root {
+    --toolbar-height: 40px;
+    --sidebar-width: 250px;
+  }
+  
+  body {
+    margin: 0;
+    padding: 0;
+    background: var(--vscode-editor-background);
+    color: var(--vscode-editor-foreground);
+    font-family: var(--vscode-font-family);
+  }
+  
+  .app {
+    display: flex;
+    height: 100vh;
+  }
+  
+  .sidebar {
+    width: var(--sidebar-width);
+    background: var(--vscode-sideBar-background);
+    border-right: 1px solid var(--vscode-panel-border);
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .main-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .toolbar {
+    height: var(--toolbar-height);
+    background: var(--vscode-editor-background);
+    border-bottom: 1px solid var(--vscode-panel-border);
+    display: flex;
+    align-items: center;
+    padding: 0 10px;
+    gap: 10px;
+  }
+  
+  .pdf-container {
+    flex: 1;
+    overflow: auto;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    background: var(--vscode-editor-background);
+  }
+  
+  .pdf-canvas {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background: white;
+  }
+  
+  .tabs-list {
+    display: flex;
+    border-bottom: 1px solid var(--vscode-panel-border);
+  }
+  
+  .tabs-trigger {
+    padding: 8px 16px;
+    border: none;
+    background: none;
+    color: var(--vscode-foreground);
+    cursor: pointer;
+  }
+  
+  .tabs-trigger[data-state='active'] {
+    background: var(--vscode-tab-activeBackground);
+    color: var(--vscode-tab-activeForeground);
+  }
+  
+  button {
+    background: var(--vscode-button-background);
+    color: var(--vscode-button-foreground);
+    border: none;
+    padding: 4px 8px;
+    border-radius: 3px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+  
+  button:hover {
+    background: var(--vscode-button-hoverBackground);
+  }
+  
+  button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
