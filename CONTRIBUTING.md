@@ -9,7 +9,7 @@ Thank you for your interest in contributing to MTX PDF Editor! We welcome contri
 
 ### 1. Fork the Repository
 
-![Fork Repository](media/fork_repository.png)
+![Fork Repository](media/git-repo.jpeg)
 
 Start by forking the [MTX PDF Editor GitHub repository](https://github.com/MTXPr0ject/mtx-pdf-editor) and cloning it to your local machine.
 
@@ -19,7 +19,7 @@ git clone https://github.com/MTXPr0ject/mtx-pdf-editor.git
 
 ### 2. Create a New Branch
 
-![New Branch](media/new_branch.png)
+![New Branch](media/git-checkout.jpeg)
 
 Create a new branch for your feature or bug fix.
 
@@ -45,7 +45,7 @@ git push origin feature/amazing-feature
 
 ### 5. Submit a Pull Request
 
-![Pull Request](media/pull_request.png)
+![Pull Request](media/create_pull.jpeg)
 
 Go to the original repository and submit a pull request. Describe your changes in detail and link any related issues.
 

@@ -1,7 +1,7 @@
 
 # 📝 MTX PDF Editor
 
-![MTX PDF Editor Logo](media/logo_banner.jfif)
+![MTX PDF Editor Logo](media/logo_banner.jpg)
 
 **MTX PDF Editor** is a feature-rich, React-based PDF editor integrated with AI capabilities, designed specifically for VS Code. Whether you're editing, analyzing content, or extracting text, MTX PDF Editor offers a seamless and powerful experience. 
 
@@ -9,7 +9,7 @@
 
 ## 📌 Key Features
 
-![Feature Overview](media/feature_overview.png)
+![Feature Overview](media/feature.jpeg)
 
 - **AI-Powered Text Extraction**: Extract text accurately with integrated AI capabilities.
 - **PDF Editing Tools**: Edit PDF content directly within VS Code.
@@ -20,7 +20,7 @@
 
 ## 🚀 Installation Guide
 
-![Installation Guide](media/installation_guide.png)
+![Installation Guide](media/install.jpg)
 
 1. Open the Extensions sidebar in VS Code.
 2. Search for `MTX PDF Editor`.
@@ -35,7 +35,7 @@ ext install MTX-Project.mtx-pdf-editor
 
 ## 📂 Opening a PDF with MTX PDF Editor
 
-![Open PDF](media/open_pdf.png)
+![Open PDF](media/open_pdf.jpeg)
 
 To open a PDF file:
 1. Right-click on a `.pdf` file in your workspace.
@@ -47,7 +47,7 @@ Or, use the **Open MTX PDF Editor** command from the Command Palette.
 
 ## ⌨️ Keyboard Shortcuts
 
-![Keyboard Shortcuts](media/keyboard_shortcuts.png)
+![Keyboard Shortcuts](media/keyboard_shortcuts.jpeg)
 
 - **Ctrl+S**: Save PDF
 - **Ctrl+K Ctrl+O**: Open a PDF document
@@ -57,7 +57,7 @@ Or, use the **Open MTX PDF Editor** command from the Command Palette.
 
 ## 🤖 Using AI-Powered Features
 
-![AI Features](media/ai_features.png)
+![AI Features](media/ai_features.jpeg)
 
 Unlock powerful AI features like text analysis and content extraction:
 1. Open a PDF and click on **Analyze Content with AI**.
@@ -67,7 +67,7 @@ Unlock powerful AI features like text analysis and content extraction:
 
 ## 🌟 Customizable Toolbar
 
-![Customizable Toolbar](media/custom_toolbar.png)
+![Customizable Toolbar](media/custom_toolbar.jpg)
 
 Personalize your editing experience by customizing the toolbar to show only the tools you need.
 
@@ -75,7 +75,7 @@ Personalize your editing experience by customizing the toolbar to show only the 
 
 ## 🖼️ Thumbnail Navigation
 
-![Thumbnail Navigation](media/thumbnail_navigation.png)
+![Thumbnail Navigation](media/features.jpg)
 
 Navigate through your PDF pages effortlessly using thumbnail previews on the sidebar.
 
