@@ -1,69 +1,49 @@
-const vscode = require('vscode');
-const { PdfEditorProvider } = require('./providers/pdfEditorProvider');
+import express from 'express';
+import { fileURLToPath } from 'url';
+import { dirname, join } from 'path';
+import { PDFDocument } from 'pdf-lib';
+import { PdfEditorProvider } from './providers/pdfEditorProvider.js';
 
-/**
- * @param {vscode.ExtensionContext} context
- */
-function activate(context) {
-  // Register PDF Editor Provider
-  context.subscriptions.push(
-    PdfEditorProvider.register(context),
-    
-    // Register commands
-    vscode.commands.registerCommand('mtx-pdf-editor.openPdf', async () => {
-      try {
-        const pdfUri = await vscode.window.showOpenDialog({
-          canSelectMany: false,
-          filters: {
-            'PDF Files': ['pdf']
-          }
-        });
-        
-        if (pdfUri && pdfUri[0]) {
-          await vscode.commands.executeCommand('vscode.openWith', pdfUri[0], 'mtx-pdf-editor.pdfEditor');
-        }
-      } catch (error) {
-        vscode.window.showErrorMessage(`Failed to open PDF: ${error.message}`);
-      }
-    }),
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
-    vscode.commands.registerCommand('mtx-pdf-editor.exportPdf', async () => {
-      try {
-        const activeEditor = vscode.window.activeTextEditor;
-        if (!activeEditor) {
-          return vscode.window.showErrorMessage('No active PDF document to export');
-        }
+const app = express();
+const port = 3000;
 
-        const saveUri = await vscode.window.showSaveDialog({
-          filters: {
-            'PDF Files': ['pdf']
-          },
-          saveLabel: 'Export PDF'
-        });
+// Serve static files from webview-ui/dist
+app.use(express.static(join(__dirname, '../webview-ui/dist')));
 
-        if (saveUri) {
-          await vscode.workspace.fs.copy(activeEditor.document.uri, saveUri, { overwrite: true });
-          vscode.window.showInformationMessage('PDF exported successfully!');
-        }
-      } catch (error) {
-        vscode.window.showErrorMessage(`Failed to export PDF: ${error.message}`);
-      }
-    })
-  );
+// Initialize PDF editor provider
+const pdfEditor = new PdfEditorProvider();
 
-  // Show welcome message on first install
-  const config = vscode.workspace.getConfiguration('mtx-pdf-editor');
-  const isFirstInstall = config.get('firstInstall');
-  
-  if (isFirstInstall === undefined) {
-    vscode.window.showInformationMessage('Thank you for installing MTX PDF Editor! Open any PDF file to get started.');
-    config.update('firstInstall', false, true);
+// API endpoints
+app.post('/api/pdf/save', express.json(), async (req, res) => {
+  try {
+    const { pdfData } = req.body;
+    const pdfDoc = await PDFDocument.load(pdfData);
+    const pdfBytes = await pdfDoc.save();
+    res.json({ success: true, data: pdfBytes });
+  } catch (error) {
+    res.status(500).json({ success: false, error: error.message });
   }
-}
+});
 
-function deactivate() {}
+app.get('/api/pdf/load/:id', async (req, res) => {
+  try {
+    // Implement PDF loading logic
+    res.json({ success: true, message: 'PDF loading endpoint' });
+  } catch (error) {
+    res.status(500).json({ success: false, error: error.message });
+  }
+});
 
-module.exports = {
-  activate,
-  deactivate
-};
+// Error handling middleware
+app.use((err, req, res, next) => {
+  console.error(err.stack);
+  res.status(500).json({ success: false, error: 'Internal Server Error' });
+});
+
+// Start server
+app.listen(port, () => {
+  console.log(`PDF Editor server running at http://localhost:${port}`);
+});

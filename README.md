@@ -1,7 +1,7 @@
 
 # 📝 MTX PDF Editor
 
-![MTX PDF Editor Logo](media/logo_banner.png)
+![MTX PDF Editor Logo](media/logo_banner.jfif)
 
 **MTX PDF Editor** is a feature-rich, React-based PDF editor integrated with AI capabilities, designed specifically for VS Code. Whether you're editing, analyzing content, or extracting text, MTX PDF Editor offers a seamless and powerful experience. 
 
