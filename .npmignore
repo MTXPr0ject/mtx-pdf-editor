@@ -1,0 +1,11 @@
+.vscode/
+.vscode-test/
+test/
+.gitignore
+vsc-extension-quickstart.md
+jsconfig.json
+*.map
+.eslintrc.json
+webview-ui/node_modules/
+webview-ui/src/
+!webview-ui/dist/

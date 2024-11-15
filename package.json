@@ -21,49 +21,104 @@
     "node": ">=14.0.0"
   },
   "type": "module",
-  "main": "src/extension.js",
+  "main": "src/cli.js",
+  "bin": {
+    "mtx": "./src/cli.js"
+  },
+  "files": [
+    "src",
+    "webview-ui/dist",
+    "LICENSE",
+    "README.md"
+  ],
   "scripts": {
-    "dev": "node src/extension.js",
-    "start": "node src/extension.js",
+    "mtx": "node src/cli.js",
+    "build": "npm run build:webview",
     "lint": "eslint .",
     "test": "node ./test/runTest.js",
     "build:webview": "vite build webview-ui",
     "dev:webview": "vite webview-ui",
     "package": "vsce package",
-    "publish": "vsce publish"
+    "publish:vsce": "vsce publish",
+    "publish:npm": "npm publish",
+    "prepublishOnly": "npm run build"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onCommand:mtx-pdf-editor.openPdf",
+    "onCustomEditor:pdf-editor.pdfEditor"
+  ],
+  "contributes": {
+    "commands": [
+      {
+        "command": "mtx-pdf-editor.openPdf",
+        "title": "Open with MTX PDF Editor",
+        "category": "MTX PDF Editor"
+      }
+    ],
+    "customEditors": [
+      {
+        "viewType": "pdf-editor.pdfEditor",
+        "displayName": "MTX PDF Editor",
+        "selector": [
+          {
+            "filenamePattern": "*.pdf"
+          }
+        ],
+        "priority": "default"
+      }
+    ]
   },
   "dependencies": {
-    "@dqbd/tiktoken": "^1.0.7",
-    "@radix-ui/react-select": "^1.2.2",
-    "@radix-ui/react-slider": "^1.1.2",
-    "@radix-ui/react-tabs": "^1.0.4",
+    "pdf-lib": "^1.17.1",
+    "pdfjs-dist": "^3.9.179",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
     "@radix-ui/react-toolbar": "^1.0.4",
-    "@react-pdf/renderer": "^3.1.12",
-    "boxen": "^7.1.1",
-    "chalk": "^5.3.0",
-    "express": "^4.18.2",
+    "@radix-ui/react-slider": "^1.1.2",
+    "@radix-ui/react-select": "^1.2.2",
+    "@radix-ui/react-tabs": "^1.0.4",
+    "zustand": "^4.4.1",
+    "tesseract.js": "^4.1.1",
+    "openai": "^4.0.0",
+    "@dqbd/tiktoken": "^1.0.7",
     "fabric": "^5.3.0",
+    "@react-pdf/renderer": "^3.1.12",
+    "express": "^4.18.2",
+    "chalk": "^5.3.0",
     "figlet": "^1.6.0",
     "gradient-string": "^2.0.2",
     "inquirer": "^9.2.10",
-    "openai": "^4.0.0",
     "ora": "^7.0.1",
-    "pdf-lib": "^1.17.1",
-    "pdfjs-dist": "^4.8.69",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "tesseract.js": "^4.1.1",
-    "zustand": "^4.4.1"
+    "boxen": "^7.1.1",
+    "node-signpdf": "^1.5.1",
+    "pdf-merger-js": "^4.3.0",
+    "image-js": "^0.35.4",
+    "pdf2pic": "^2.2.1",
+    "docx": "^8.2.2",
+    "pdf-to-printer": "^5.6.0",
+    "commander": "^11.0.0"
   },
   "devDependencies": {
+    "@types/vscode": "^1.80.0",
     "@types/node": "^20.4.5",
     "@types/react": "^18.2.21",
     "@types/react-dom": "^18.2.7",
-    "@types/vscode": "^1.80.0",
     "@vitejs/plugin-react": "^4.0.4",
     "eslint": "^8.47.0",
     "typescript": "^5.1.6",
     "vite": "^4.4.9",
     "vsce": "^2.15.0"
-  }
+  },
+  "keywords": [
+    "pdf",
+    "editor",
+    "vscode",
+    "cli",
+    "pdf-editor",
+    "ai",
+    "converter"
+  ]
 }

@@ -6,13 +6,29 @@ export async function getMainAction() {
     {
       type: 'list',
       name: 'action',
-      message: chalk.yellow('What would you like to do?'),
+      message: chalk.cyan.bold('What would you like to do?'),
+      prefix: chalk.green('→'),
       choices: [
-        'Start PDF Editor',
-        'Configure Settings',
-        'Check for Updates',
-        'View Documentation',
-        'Exit'
+        {
+          name: chalk.blue('📝 Start PDF Editor'),
+          value: 'Start PDF Editor'
+        },
+        {
+          name: chalk.yellow('⚙️  Configure Settings'),
+          value: 'Configure Settings'
+        },
+        {
+          name: chalk.magenta('🔄 Check for Updates'),
+          value: 'Check for Updates'
+        },
+        {
+          name: chalk.cyan('📚 View Documentation'),
+          value: 'View Documentation'
+        },
+        {
+          name: chalk.red('👋 Exit'),
+          value: 'Exit'
+        }
       ]
     }
   ]);
@@ -24,26 +40,29 @@ export async function getSettings() {
     {
       type: 'checkbox',
       name: 'features',
-      message: 'Select features to enable:',
+      message: chalk.yellow.bold('Select features to enable:'),
+      prefix: chalk.green('→'),
       choices: [
-        'AI Analysis',
-        'Auto-Save',
-        'Dark Mode',
-        'Page Thumbnails'
+        { name: chalk.blue('🤖 AI Analysis'), value: 'AI Analysis' },
+        { name: chalk.magenta('💾 Auto-Save'), value: 'Auto-Save' },
+        { name: chalk.cyan('🌙 Dark Mode'), value: 'Dark Mode' },
+        { name: chalk.yellow('🖼️  Page Thumbnails'), value: 'Page Thumbnails' }
       ]
     },
     {
       type: 'input',
       name: 'autosaveInterval',
-      message: 'Auto-save interval (minutes):',
+      message: chalk.blue.bold('Auto-save interval (minutes):'),
+      prefix: chalk.green('→'),
       default: '5',
       when: (answers) => answers.features.includes('Auto-Save'),
-      validate: (value) => !isNaN(value) || 'Please enter a number'
+      validate: (value) => !isNaN(value) || chalk.red('Please enter a number')
     },
     {
       type: 'confirm',
       name: 'enableLogging',
-      message: 'Enable debug logging?',
+      message: chalk.magenta.bold('Enable debug logging?'),
+      prefix: chalk.green('→'),
       default: false
     }
   ]);
